@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('motorcycle_pictures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('motorcycle_id')->constrained();
-            $table->string('image_url');
+            $table->string('image');
             $table->timestamps();
         });
     }
