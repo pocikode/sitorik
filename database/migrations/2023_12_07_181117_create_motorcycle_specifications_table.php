@@ -14,46 +14,45 @@ return new class extends Migration
         Schema::create('motorcycle_specifications', function (Blueprint $table) {
             $table->foreignId('motorcycle_id')->unique()->constrained();
             // Engine & Performances
-            $table->string('drive_type');
-            $table->string('top_speed');
-            $table->string('max_torque');
-            $table->string('max_power');
-            $table->string('cooling_system');
+            $table->string('drive_type')->nullable();
+            $table->string('top_speed')->nullable();
+            $table->string('max_torque')->nullable();
+            $table->string('max_power')->nullable();
+            $table->string('cooling_system')->nullable();
 
             // Dimension
-            $table->string('category');
-            $table->string('wheel_base');
-            $table->string('length');
-            $table->string('width');
-            $table->string('height');
-            $table->string('kerb_weight');
-            $table->string('gross_weight');
-            $table->string('seat_capacity');
+            $table->string('wheel_base')->nullable();
+            $table->string('length')->nullable();
+            $table->string('width')->nullable();
+            $table->string('height')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('seat_capacity')->nullable();
 
             // Gear & Transmission
-            $table->string('transmission');
-            $table->string('gearbox');
+            $table->string('transmission')->nullable();
+            $table->string('gearbox')->nullable();
 
             // Chassis & Suspension
-            $table->string('front_suspension');
-            $table->string('rear_suspension');
+            $table->string('front_suspension')->nullable();
+            $table->string('rear_suspension')->nullable();
 
             // Wheels & Tyres
-            $table->string('type_tyre');
-            $table->string('front_tyre');
-            $table->string('rear_tyre');
-            $table->string('front_wheel_size');
-            $table->string('rear_wheel_size');
+            $table->string('type_tyre')->nullable();
+            $table->string('front_tyre')->nullable();
+            $table->string('rear_tyre')->nullable();
+            $table->string('front_wheel_size')->nullable();
+            $table->string('rear_wheel_size')->nullable();
 
             // Brake
-            $table->string('front_brake');
-            $table->string('rear_brake');
+            $table->string('front_brake')->nullable();
+            $table->string('rear_brake')->nullable();
 
             // Electrical
-            $table->string('battery_capacity');
-            $table->string('battery_charging_time');
-            $table->string('battery_weight');
-            $table->string('motor_type');
+            $table->string('battery_capacity')->nullable();
+            $table->string('battery_charging_time')->nullable();
+            $table->string('battery_weight')->nullable();
+            $table->string('battery_slot')->nullable();
+            $table->string('motor_type')->nullable();
             $table->timestamps();
         });
     }

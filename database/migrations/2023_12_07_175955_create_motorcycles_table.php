@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('motorcycles', function (Blueprint $table) {
             $table->id();
-            $table->string('model_name', 100);
+            $table->string('model', 100);
             $table->string('slug', 50);
             $table->foreignId('brand_id')->constrained();
+            $table->enum('category', ['scooter', 'sport', 'moped']);
             $table->unsignedMediumInteger('year');
             $table->unsignedInteger('price');
             $table->timestamps();
