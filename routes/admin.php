@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\MotorcycleController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\Admin\BrandList;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -12,8 +12,7 @@ Volt::route('login', 'admin.pages.auth.login')
 
 Route::middleware('auth')->group(function () {
     Route::view('/', 'admin.dashboard')->name('dashboard');
-    Route::get('/brands', [BrandController::class, 'index'])->name('brands');
-    Route::post('/brands', [BrandController::class, 'store']);
+    Route::get('/brands', BrandList::class)->name('brands');
 
     Route::get('/motorcycles', [MotorcycleController::class, 'index'])->name('motorcycles');
     Route::get('/motorcycles/create', [MotorcycleController::class, 'create'])->name('motorcycles.create');

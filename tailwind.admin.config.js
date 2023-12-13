@@ -5,6 +5,7 @@ import flowbite from 'flowbite/plugin';
 export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/wire-elements/modal/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
@@ -22,7 +23,8 @@ export default {
         'leading-9',
         'shadow-lg',
         'bg-opacity-50',
-        'dark:bg-opacity-80'
+        'dark:bg-opacity-80',
+        // 'sm:max-w-2xl'
     ],
     darkMode: 'class',
     theme: {
