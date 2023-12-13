@@ -115,7 +115,7 @@
                                         </div>
                                     </td>
                                     <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $motorcycle->year }}</td>
-                                    <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $motorcycle->price }}</td>
+                                    <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">Rp {{ ($motorcycle->price / 1000000) }} Million</td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">
                                         <button type="button" data-modal-target="edit-user-modal"
                                                 data-modal-toggle="edit-user-modal"
