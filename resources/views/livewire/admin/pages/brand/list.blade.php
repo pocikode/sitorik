@@ -118,7 +118,7 @@
                 </div>
             </div>
 
-            <x-admin.pagination :paginator="$brands" />
+            <div class="w-full mt-5">{{ $brands->links('components.admin.pagination') }}</div>
         </div>
     </div>
 </div>
