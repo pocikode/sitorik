@@ -3,3 +3,11 @@
 @tailwind utilities;
 
 @config "../../tailwind.admin.config.js";
+
+trix-toolbar .trix-button {
+    @apply dark:bg-gray-300
+}
+
+trix-editor {
+    @apply dark:text-gray-300
+}

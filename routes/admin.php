@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\MotorcycleController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\Admin\BrandList;
@@ -20,6 +21,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'edit'])->name('motorcycles.edit');
     Route::put('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'update']);
     Route::delete('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'destroy'])->name('motorcycles.delete');
+
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/articles', [ArticleController::class, 'store']);
+    Route::get('/articles/{article:slug}', [ArticleController::class, 'edit'])->name('articles.edit');
+    Route::put('/articles/{article:slug}', [ArticleController::class, 'update']);
 });
 
 
