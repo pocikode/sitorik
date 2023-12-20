@@ -25,10 +25,9 @@ trait GenerateUniqueSlugTrait
         }
 
         // Check if the modified slug already exists in the table
-        $existingSlugs = $this->getExistingSlugs($slug);
-//        dd($existingSlugs, $slug);
+        $existingSlugs = $this->getExistingSlugs($slug, $originalSlug);
 
-        if (!in_array($originalSlug, $existingSlugs)) {
+        if (!in_array($slug, $existingSlugs)) {
             // Slug is unique, no need to append numbers
             return $slug;
         }
@@ -48,9 +47,13 @@ trait GenerateUniqueSlugTrait
         }
     }
 
-    private function getExistingSlugs(string $slug): array
+    private function getExistingSlugs(string $slug, string $originalSlug): array
     {
-        return $this->newQuery()->where('slug', 'LIKE', $slug . '%')
+        return $this->newQuery()
+            ->where(function ($query) use ($slug, $originalSlug) {
+                $query->where('slug', 'LIKE', $slug . '%')
+                    ->orWhere('slug', 'LIKE', $originalSlug . '%');
+            })
             ->where('id', '!=', $this->id ?? null) // Exclude the current model's ID
             ->pluck('slug')
             ->toArray();
