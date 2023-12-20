@@ -17,6 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/motorcycles', [MotorcycleController::class, 'index'])->name('motorcycles');
     Route::get('/motorcycles/create', [MotorcycleController::class, 'create'])->name('motorcycles.create');
     Route::post('/motorcycles', [MotorcycleController::class, 'store']);
+    Route::get('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'edit'])->name('motorcycles.edit');
+    Route::put('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'update']);
 });
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Str;
+
 trait GenerateUniqueSlugTrait
 {
     public static function bootGenerateUniqueSlugTrait(): void

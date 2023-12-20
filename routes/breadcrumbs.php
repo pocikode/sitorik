@@ -1,6 +1,7 @@
 <?php
 // Admin Page Breadcrumbs
 
+use App\Models\Motorcycle;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
@@ -28,4 +29,12 @@ Breadcrumbs::for('motorcycles-create', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Motorcycles', route('admin.motorcycles'));
     $trail->push('Create');
+});
+
+// Home > Motorcycles > Brand - Model > Edit
+Breadcrumbs::for('motorcycles-edit', function (BreadcrumbTrail $trail, Motorcycle $motorcycle) {
+    $trail->parent('home');
+    $trail->push('Motorcycles', route('admin.motorcycles'));
+    $trail->push($motorcycle->brand->name . ' ' . $motorcycle->model, '#');
+    $trail->push('Edit');
 });
