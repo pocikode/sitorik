@@ -28,11 +28,14 @@ class ArticleController extends Controller
             'title' => 'required',
             'article-trixFields' => 'required',
             'attachment-article-trixFields' => 'nullable',
+            'publish' => 'required',
         ]);
 
         $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = $request->user()->id;
+        $data['is_publish'] = $data['publish'] === 'Submit';
 
+        unset($data['publish']);
         Article::create($data);
 
         return redirect()
@@ -51,12 +54,14 @@ class ArticleController extends Controller
             'title' => 'required',
             'article-trixFields' => 'required',
             'attachment-article-trixFields' => 'nullable',
+            'publish' => 'required',
         ]);
         $data['slug'] = Str::slug($data['title']);
+        $data['is_publish'] = $data['publish'] === 'Submit';
 
-//        dd($data);
-
+        unset($data['publish']);
         $article->update($data);
+
         return redirect()
             ->route('admin.articles')
             ->with('success', 'Article Updated Successfully');

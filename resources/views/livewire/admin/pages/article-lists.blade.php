@@ -88,7 +88,7 @@
                                 Author
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Slug
+                                Status
                             </th>
                             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                 Actions
@@ -108,7 +108,15 @@
                                     </td>
                                     <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $article->title }}</td>
                                     <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $article->user->name }}</td>
-                                    <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ ($article->slug) }}</td>
+                                    @if ($article->is_publish)
+                                        <td class="max-w-sm p-4 text-base font-semibold text-green-500 truncate xl:max-w-xs dark:text-green-400">
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Publish</span>
+                                        </td>
+                                    @else
+                                        <td class="max-w-sm p-4 text-base font-semibold text-gray-500 truncate xl:max-w-xs dark:text-gray-400">
+                                            <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Draft</span>
+                                        </td>
+                                    @endif
                                     <td class="p-4 space-x-2 whitespace-nowrap">
                                         <a wire:navigate href="{{ route('admin.articles.edit', $article->slug) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
