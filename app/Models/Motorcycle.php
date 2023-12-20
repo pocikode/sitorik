@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\GenerateUniqueSlugTrait;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,5 +28,10 @@ class Motorcycle extends Model
     public function picture(): HasOne
     {
         return $this->hasOne(MotorcyclePicture::class);
+    }
+
+    function modelWithBrand(): Attribute
+    {
+        return Attribute::get(fn () => $this->brand->name . " " . $this->model);
     }
 }

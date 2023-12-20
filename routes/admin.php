@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/motorcycles', [MotorcycleController::class, 'store']);
     Route::get('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'edit'])->name('motorcycles.edit');
     Route::put('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'update']);
+    Route::delete('/motorcycles/{motorcycle:slug}', [MotorcycleController::class, 'destroy'])->name('motorcycles.delete');
 });
 
 

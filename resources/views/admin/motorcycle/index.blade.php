@@ -8,4 +8,25 @@
             <livewire:admin.motorcycle-lists />
         </div>
     </div>
+
+    @include('admin.motorcycle.delete')
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const deleteBtnModal = document.querySelectorAll('[data-modal-target="delete-modal"]')
+                deleteBtnModal.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        const modelName = this.getAttribute('data-name')
+                        const slug = this.getAttribute('data-slug')
+
+                        const form = document.getElementById('deleteForm')
+                        form.setAttribute('action', `{{ route('admin.motorcycles') }}/${slug}`)
+
+                        document.getElementById('modelToDelete').innerText = modelName
+                        console.log('clicked')
+                    })
+                })
+            })
+        </script>
+    @endpush
 </x-admin-layout>

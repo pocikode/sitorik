@@ -9,11 +9,12 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class MotorcycleController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('admin.motorcycle.index');
     }
@@ -25,7 +26,7 @@ class MotorcycleController extends Controller
         return view('admin.motorcycle.form', compact('brands', 'motorcycle'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $image = null;
         if ($request->hasFile('image')) {
@@ -144,5 +145,21 @@ class MotorcycleController extends Controller
         return redirect()
             ->route('admin.motorcycles')
             ->with('success', 'Motorcycle Updated Successfully!');
+    }
+
+    public function destroy(Motorcycle $motorcycle): RedirectResponse
+    {
+        $image = $motorcycle->picture->image;
+        DB::transaction(function () use ($motorcycle) {
+            $motorcycle->picture()->delete();
+            $motorcycle->specification()->delete();
+            $motorcycle->delete();
+        });
+
+        Storage::delete($image);
+
+        return redirect()
+            ->route('admin.motorcycles')
+            ->with('success', 'Motorcycle Deleted Successfully!');
     }
 }

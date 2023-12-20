@@ -117,9 +117,7 @@
                                     <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{ $motorcycle->year }}</td>
                                     <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">Rp {{ ($motorcycle->price / 1000000) }} Million</td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">
-                                        <a wire:navigate href="{{ route('admin.motorcycles.edit', $motorcycle->slug) }}" data-modal-target="edit-user-modal"
-                                                data-modal-toggle="edit-user-modal"
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                        <a wire:navigate href="{{ route('admin.motorcycles.edit', $motorcycle->slug) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -130,9 +128,7 @@
                                             </svg>
                                             Edit
                                         </a>
-                                        <button type="button" data-modal-target="delete-user-modal"
-                                                data-modal-toggle="delete-user-modal"
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
+                                        <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal" data-slug="{{ $motorcycle->slug }}" data-name="{{ $motorcycle->model_with_brand }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
                                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
