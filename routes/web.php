@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'pages.home', ['header' => 'ASU'])->name('home');
+Route::view('/', 'pages.home')->name('home');
+Route::get('/berita/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
