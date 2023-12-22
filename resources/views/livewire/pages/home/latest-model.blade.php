@@ -1,26 +1,10 @@
 <div class="flex flex-row gap-x-4">
-    <div class="basis-1/4">
-        <img class="rounded-md"
-             src="https://imgcdn.oto.com/medium/gallery/exterior/88/2848/kawasaki-ninja-e-1-77761.jpg" alt="">
-        <h3 class="mt-4">Kawasaki NINJA E-1</h3>
-        <span class="font-extrabold">Rp 149,9 Juta</span>
-    </div>
-    <div class="basis-1/4">
-        <img class="rounded-md"
-             src="https://imgcdn.oto.com/medium/gallery/exterior/88/2849/kawasaki-z-e-1-79536.jpg" alt="">
-        <h3 class="mt-4">Kawasaki Z E-1</h3>
-        <span class="font-extrabold">Rp 146,9 Juta</span>
-    </div>
-    <div class="basis-1/4">
-        <img class="rounded-md"
-             src="https://imgcdn.oto.com/medium/gallery/exterior/173/2833/lisgo-s3-40349.jpg" alt="">
-        <h3 class="mt-4">LISGO S3</h3>
-        <span class="font-extrabold">Rp 16,9 Juta</span>
-    </div>
-    <div class="basis-1/4">
-        <img class="rounded-md"
-             src="https://imgcdn.oto.com/medium/gallery/exterior/175/2834/kool-arjuna-54508.jpg" alt="">
-        <h3 class="mt-4">KOOL Arjuna</h3>
-        <span class="font-extrabold">Rp 21,5 Juta</span>
-    </div>
+    @foreach($motorcycles as $motorcycle)
+        <div class="basis-1/4">
+            <img class="rounded-md"
+                 src="{{ ($motorcycle->picture && $motorcycle->picture->image) ? Storage::url($motorcycle->picture->image) : 'https://placehold.co/600x400' }}" alt="{{ $motorcycle->model_with_brand }}">
+            <a href="{{ route('motorcycles.show', [$motorcycle->brand->slug, $motorcycle->slug]) }}" class="block mt-4 hover:text-cyan-500">{{ $motorcycle->model_with_brand }}</a>
+            <span class="font-extrabold">Rp {{ preg_replace("/\,?0+$/", "", number_format(($motorcycle->price / 1000000), 1, ',', '.')) }} Juta</span>
+        </div>
+    @endforeach
 </div>

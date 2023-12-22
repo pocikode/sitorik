@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MotorcycleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'pages.home')->name('home');
+
+Route::get('/{brand_slug}_{slug}', [MotorcycleController::class, 'show'])->name('motorcycles.show');
 
 Route::get('/berita', [ArticleController::class, 'index'])->name('articles');
 Route::get('/berita/{slug}', [ArticleController::class, 'show'])->name('articles.show');
