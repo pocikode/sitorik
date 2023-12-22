@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Berita dan Artikel">
     <section class="container max-w-3xl mx-auto" x-data="articles">
         <h1 class="mt-5 mb-5 font-bold text-3xl text-gray-800">Berita dan Informasi Motor Listrik Terbaru</h1>
         <div class="flex flex-col gap-y-5">
