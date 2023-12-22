@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Manrope:wght@200;300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.specification-highlight {
+    font-family: 'Barlow Condensed', sans-serif;
+    @apply text-3xl text-cyan-500;
+}
+
+.table-spec {
+    @apply table-fixed w-full;
+    background-color: #eceff180;
+}
+
+.table-spec:not(:last-child) {
+    border-bottom: 5px solid #eceff1;
+}
+
+.table-spec tr:not(:last-child) {
+    @apply border-b;
+}
+
+.table-spec th, .table-spec td {
+    @apply px-3 py-0.5;
+}
+
+.table-spec th {
+    @apply w-32 text-left align-top uppercase;
+    color: #0088a3;
+}
+
+.table-spec td.spec-name {
+    @apply w-52 text-left font-bold;
+}
+
+.table-spec td.spec-info {
+    @apply w-auto text-left;
+}

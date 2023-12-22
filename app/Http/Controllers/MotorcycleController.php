@@ -17,9 +17,8 @@ class MotorcycleController extends Controller
         $motorcycle = Motorcycle::with('brand', 'specification', 'picture')
             ->where('slug', $slug)
             ->firstOrFail();
+        $title = $motorcycle->model_with_brand;
 
-        dd($motorcycle);
-
-        return view('pages.motorcycle.index', compact($motorcycle));
+        return view('pages.motorcycle.show', compact('title', 'motorcycle'));
     }
 }
