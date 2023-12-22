@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'pages.home')->name('home');
+
+Route::get('/berita', [ArticleController::class, 'index'])->name('articles');
 Route::get('/berita/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::view('dashboard', 'dashboard')
