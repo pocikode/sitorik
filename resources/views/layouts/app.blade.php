@@ -49,6 +49,7 @@
     </main>
 
     <livewire:layout.footer />
+    @stack('scripts')
 </div>
 </body>
 </html>
