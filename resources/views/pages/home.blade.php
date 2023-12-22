@@ -168,6 +168,6 @@
     <!-- Latest Article Section -->
     <section class="container max-w-5xl mx-auto pb-16">
         <h2 class="pt-12 pb-6 text-center font-bold text-2xl">Berita dan Artikel Terbaru</h2>
-        <livewire:home.latest-post />
+        <livewire:home.latest-article />
     </section>
 </x-app-layout>

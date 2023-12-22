@@ -26,11 +26,13 @@ class ArticleController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
+            'image' => ['required', 'image'],
             'article-trixFields' => 'required',
             'attachment-article-trixFields' => 'nullable',
             'publish' => 'required',
         ]);
 
+        $data['image'] = $request->file('image')->storePublicly('articles');
         $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = $request->user()->id;
         $data['is_publish'] = $data['publish'] === 'Submit';
@@ -52,12 +54,17 @@ class ArticleController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
+            'image' => ['image'],
             'article-trixFields' => 'required',
             'attachment-article-trixFields' => 'nullable',
             'publish' => 'required',
         ]);
         $data['slug'] = Str::slug($data['title']);
         $data['is_publish'] = $data['publish'] === 'Submit';
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->storePublicly('articles');
+        }
 
         unset($data['publish']);
         $article->update($data);
