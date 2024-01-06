@@ -209,4 +209,13 @@
             <livewire:partials.latest-model-sidebar lazy />
         </div>
     </div>
+
+    <div class="container max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold mt-3">Pertanyaan dan Komentar</h2>
+        <div id="commento"></div>
+    </div>
+
+    @push('scripts')
+        <script defer src="https://cdn.commento.io/js/commento.js"></script>
+    @endpush
 </x-app-layout>
